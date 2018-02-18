@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<h1>Hello</h1>
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    {% if tableArray is not empty %}
+        {% autoescape false %}
+            <table style="width: 100%; margin-top: 50px;">
+                <tr>
+                    <th>Number</th>
+                    <th>Source</th>
+                    <th>Time</th>
+                    <th>Message</th>
+                </tr>
+                {% for row in tableArray %}
+                    <tr style="text-align: center;">
+                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ loop.index }}</td>
+                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.source }}</td>
+                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.time }}</td>
+                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.message }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endautoescape %}
+    {% endif %}
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
