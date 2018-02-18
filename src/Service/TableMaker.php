@@ -26,7 +26,7 @@ class TableMaker
             }
             if (!empty($tweets)) {
                 $tweets = $this->TweetSorterDesc($tweets);
-                $tweets =$this->insertChuckNorris($tweets, $helper->getMethod());
+                $tweets = $this->insertChuckNorris($tweets, $helper->getMethod());
             }
             //dump($tweets);
             return $tweets;
@@ -42,12 +42,12 @@ class TableMaker
         $ret = array();
         foreach ($args as $arg) {
             $ret[] = [
-                'source' => 'twitter/'.$user,
+                'source' => 'twitter/' . $user,
                 'time' => $arg->created_at,
                 'message' => $arg->text,
             ];
         }
-       return $ret;
+        return $ret;
     }
 
     private function TweetSorterDesc($tweets)
@@ -75,12 +75,12 @@ class TableMaker
             $fib = new FibonacciHelper();
 
             foreach ($tweets as $tweet) {
-                if($fib->isFibonacciNumber($current)) {
+                if ($fib->isFibonacciNumber($current)) {
                     if ($jokeId >= count($jokes)) {
                         $this->getChuckNorrises(20);
                         $jokeId = 0;
                     }
-                    array_splice($tweets, $current, 0, array($jokes[$jokeId]));
+                    array_splice($tweets, $current - 1, 0, array($jokes[$jokeId]));
                     $jokeId++;
                 }
                 $current++;

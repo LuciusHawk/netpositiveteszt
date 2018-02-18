@@ -11,7 +11,7 @@ namespace App\Entity\Helper;
 
 class FibonacciHelper
 {
-    private $prevNumber = 1;
+    private $prevNumber = 2;
     private $nextNumber = 3;
     private $currentNumber;
 
@@ -38,12 +38,12 @@ class FibonacciHelper
      */
     public function isFibonacciNumber($number)
     {
-        if ($number == $this->nextNumber) {
-            $this->currentNumber = $this->nextNumber;
+        $isNextFibNumber = ($number === $this->nextNumber);
+        if ($isNextFibNumber) {
+            $this->currentNumber = $number;
             $this->setNextNumber();
             $this->setPrevNumber();
-            return true;
         }
-        return false;
+        return $isNextFibNumber;
     }
 }

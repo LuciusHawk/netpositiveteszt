@@ -6,16 +6,20 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<h1>Hello</h1>
+<div style="text-align: center">
+    Netpositive Teszt: Twitter & Chuck Norris
+</div>
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+   <div style="padding: 20px 0;">
+       {{ form_start(form) }}
+       {{ form_widget(form) }}
+       {{ form_end(form) }}
+   </div>
 
     {% if tableArray is not empty %}
         {% autoescape false %}
-            <table style="width: 100%; margin-top: 50px;">
-                <tr>
+            <table  border="1" width="100%">
+                <tr style="text-align: center; border-bottom: solid 1px black;">
                     <th>Number</th>
                     <th>Source</th>
                     <th>Time</th>
@@ -23,10 +27,10 @@
                 </tr>
                 {% for row in tableArray %}
                     <tr style="text-align: center;">
-                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ loop.index }}</td>
-                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.source }}</td>
-                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.time }}</td>
-                        <td style="border-bottom: solid 1px black; padding: 2px;">{{ row.message }}</td>
+                        <td style=" padding: 2px;">{{ loop.index }}</td>
+                        <td style=" padding: 2px;">{{ row.source }}</td>
+                        <td style=" padding: 2px;">{{ row.time }}</td>
+                        <td style=" padding: 2px;">{{ row.message }}</td>
                     </tr>
                 {% endfor %}
             </table>
